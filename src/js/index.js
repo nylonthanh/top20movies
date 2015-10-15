@@ -11,31 +11,40 @@ var onPostHover = function () {
 
 var onPosterClick = function () {
     $('div.top-movie>div.wrapper').on('click', function() {
-        $('#movie-details').append(' ');
         $('.overlay').toggleClass('hidden');
-        $('#movie-details').toggleClass('hidden');
 
         var movieId = $(this).parent().closest('div').data('id');
-        $.get( 'ajax/get_movie_details.php',
-            {
-                'movieId' : movieId
-            },
-            function( data ) {
-                $('#movie-details').append( data );
+        var allMovieDetailArray = $('#movie-details .container .row');
+        var numMovies = allMovieDetailArray.length;
+        for (i = 0; i < numMovies; i++) {
+            if ($(allMovieDetailArray[i]).data('id') == movieId) {
+                scrollTo(0,0);
+                $(allMovieDetailArray[i]).toggleClass('hidden');
+                $(allMovieDetailArray[i]).toggleClass('currentMovieDetails');
+                return true;
             }
-        );
+        }
     });
 
     $('.overlay').on('click', function() {
-        $('.overlay').toggleClass('hidden');
-        $('#movie-details').toggleClass('hidden');
+        hideMovieDetails();
     });
+
+    $('#movie-details .container .row').on('click', function() {
+        hideMovieDetails();
+    });
+
 };
 
+var hideMovieDetails = function() {
+    $('.overlay').toggleClass('hidden');
+    var findCurrentMovie = $('#movie-details .container').find('.currentMovieDetails')
+    $(findCurrentMovie).toggleClass('currentMovieDetails');
+    $(findCurrentMovie).toggleClass('hidden');
+};
 
+//docuemnt ready
 $(document).ready(function(){
     onPostHover();
     onPosterClick();
 });
-
-

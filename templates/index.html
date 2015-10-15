@@ -63,7 +63,28 @@
     </div>
 </footer>
 <div class="overlay hidden"></div>
-<div id="movie-details" class="hidden"></div>
+<div id="movie-details" style="display: block;">
+    <div class="movie">
+        <div class="container">
+            {% for movie in movieArray %}
+            <div class="row hidden" data-id="{{movie.id|escape}}">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 movie-image">
+                    <img class="poster" src="//image.tmdb.org/t/p/w500/{{movie.poster_path|escape}}">
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 movie-info">
+                    <h3>{{ movie.title|escape }}</h3>
+                    <h4>${{ movie.revenue|number_format|escape }}</h4>
+                    <p class="rating">
+                        <span class="average"><b>{{ movie.vote_average|escape }}</b></span> / 10
+                        <span class="votes">({{ movie.vote_count|escape }} votes)</span>
+                    </p>
+                    <p>{{ movie.overview|escape }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 <script src="/js/scripts.min.js"></script>
 

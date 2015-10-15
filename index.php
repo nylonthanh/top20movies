@@ -21,7 +21,7 @@ if ($cache->isCached()) {
         $cache->updateCache($movieList);
 
     } catch (Exception $e) {
-        //fails silently but logs and emails to admin, assumes mail will work
+        //assumes mail will work
         error_log($e->getMessage());
         mail(ADMIN_EMAIL, 'Exception thrown', $e->getMessage());
         echo 'sorry could not connect to the Movie DB Serverice.';
@@ -33,6 +33,6 @@ try {
     (new App\View('index.html'))->render($movieList);
 
 } catch (Exception $e) {
-    (new app\view('error'))->render('error');
+    (new app\view('error.html'))->render($e->getMessage());
 
 }
