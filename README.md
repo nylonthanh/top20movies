@@ -35,7 +35,7 @@ run:
 add:
 
   MAILTO="youremail@asdf.org"
-  01 03 * * * /cron/update_movie_details.php
+  01 03 * * * /usr/bin/php /cron/update_movie_details.php
 
   this will run at 3:01AM every day
 
