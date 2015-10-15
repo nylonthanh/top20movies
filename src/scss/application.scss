@@ -1,0 +1,10 @@
+@import "_reset.scss";
+
+/* Definitions */
+@import "_variables.scss";
+
+/* Global Styles */
+@import "_globals.scss";
+
+/* Page specific */
+@import "pages/_selected-movie.scss";

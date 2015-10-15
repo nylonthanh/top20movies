@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh Pham KödTest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet/less" type="text/css" href="/css/variables.less" />
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+<body class="tk-proxima-nova-soft page page-top-movies">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">KödTest</a>
+        </div>
+    </div>
+</nav>
+<div class="page">
+    <div id="top-movies-hero" class="jumbotron text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-1">
+                    <h2>Top 20 Movies of 2015 by Revenue</h2>
+                    <p>KödTest Top Movies provides you with trusted cinema data tracking millions of films across all levels of the industry.</p>
+                    <p>
+                        <a href="http://themoviedb.org/" target="_blank">
+                            <button class="btn btn-default">Get access to this data</button>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container top-movies">
+        <div class="row">
+            {% for movie in movieArray %}
+
+            <!--${{ movie.revenue|number_format|escape }}
+            {{ movie.overview|escape }}-->
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 top-movie text-center" data-id="{{ movie.id|escape }}">
+                <div class="wrapper">
+                    <div class="poster">
+                        <img src="//image.tmdb.org/t/p/w500//{{movie.poster_path|escape}}" />
+                    </div>
+                    <div class="info">
+                        <h5 class="title">{{ movie.title|escape }}</h5>
+                        <p class="rating">
+                            <span class="average"><b>{{ movie.vote_average|escape }}</b></span> / 10
+                            <span class="votes">({{ movie.vote_count|escape }} votes)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                &copy; 2015 <a href="https://www.appannie.com/" target="_blank">App Annie</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="overlay"></div>
+<div id="movie-details"></div>
+
+<script src="/js/scripts.min.js"></script>
+
+</body>
+</html>

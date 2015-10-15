@@ -1,0 +1,11 @@
+<?php
+
+if(!defined('ALLOW_ACCESS')) {
+    die('Direct access not permitted');
+}
+
+const MOVIEDB_API_KEY = '';
+const MOVIEDB_API_URL = 'https://api.themoviedb.org/3';
+const ADMIN_EMAIL = '';
+const CACHE_FILE =  __DIR__ . "/../cache/index.html";
+const CACHE_TIME = 3600;
