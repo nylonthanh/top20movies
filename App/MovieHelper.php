@@ -26,7 +26,7 @@ class MovieHelper
 
     /**
      * calls themoviedb api and returns top 20 grossing movies of 2015
-     * //https://api.themoviedb.org/3/discover/movie?api_key=9e1b08f9af16f8d7c20c0dd0aeb4749a&sort_by=revenue.desc&page=1&primary_release_date.gte=2015-01-01
+     * https://api.themoviedb.org/3/discover/movie?api_key=9e1b08f9af16f8d7c20c0dd0aeb4749a&sort_by=revenue.desc&page=1&primary_release_date.gte=2015-01-01
      * @return mixed
      */
     public function setMovieList()
@@ -34,7 +34,7 @@ class MovieHelper
         $params = http_build_query(array(
             "page" => $this->pageNumber,
             "primary_release_date.gte" => $this->releaseDateGte,
-            "sort_by" => $this->sortyBy,
+            "sort_by" => $this->sortBy,
             "api_key" => MOVIEDB_API_KEY
         ));
 
@@ -81,7 +81,7 @@ class MovieHelper
 
         foreach($this->movieList as $movie => $movieDataObj){
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "http://api.themoviedb.org/3/movie/$movieDataObj->id?$param");
+            curl_setopt($ch, CURLOPT_URL, MOVIEDB_API_URL . "/movie/$movieDataObj->id?$param");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_HEADER, FALSE);
             $movieData = curl_exec($ch);
@@ -111,6 +111,7 @@ class MovieHelper
     protected function addRevenue($movieDataObj, $movieData, $movieList)
     {
         $movieList[] = array(
+            'id' => $movieDataObj->id,
             'title' => $movieDataObj->title,
             'vote_average' => $movieDataObj->vote_average,
             'vote_count' => $movieDataObj->vote_count,

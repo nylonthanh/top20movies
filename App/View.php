@@ -17,7 +17,7 @@ class View
         $this->loader = new \Twig_Loader_Filesystem(__DIR__ . '/../templates');
         $this->twig = new \Twig_Environment($this->loader, array(
             'debug' => true,
-            'cache' => __DIR__ . '/cache'
+            'cache' => __DIR__ . '/../cache'
         ));
         $this->twig->addExtension(new \Twig_Extension_Debug());
         $this->template = $this->twig->loadTemplate($template);

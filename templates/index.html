@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <title>Thanh Pham KödTest</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet/less" type="text/css" href="/css/variables.less" />
-    <link rel="stylesheet" href="/css/styles.css" type="text/css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.min.css" type="text/css" />
 </head>
 <body class="tk-proxima-nova-soft page page-top-movies">
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">KödTest</a>
+            <a class="navbar-brand" href="http://www.kodtest.me/">KödTest</a>
         </div>
     </div>
 </nav>
@@ -36,13 +34,10 @@
         <div class="row">
             {% for movie in movieArray %}
 
-            <!--${{ movie.revenue|number_format|escape }}
-            {{ movie.overview|escape }}-->
-
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 top-movie text-center" data-id="{{ movie.id|escape }}">
                 <div class="wrapper">
                     <div class="poster">
-                        <img src="//image.tmdb.org/t/p/w500//{{movie.poster_path|escape}}" />
+                        <img src="//image.tmdb.org/t/p/w500/{{movie.poster_path|escape}}" />
                     </div>
                     <div class="info">
                         <h5 class="title">{{ movie.title|escape }}</h5>
@@ -67,8 +62,8 @@
         </div>
     </div>
 </footer>
-<div class="overlay"></div>
-<div id="movie-details"></div>
+<div class="overlay hidden"></div>
+<div id="movie-details" class="hidden"></div>
 
 <script src="/js/scripts.min.js"></script>
 

@@ -19,14 +19,28 @@ module.exports = function(grunt) {
           dest: 'js/scripts.min.js'
       }
     },
+   concat: {
+        css: {
+           src: 'src/css/*.css',
+           dest: 'src/cache/concat.css'
+        }
+    },
+    cssmin: {
+        css:{
+          src: 'src/cache/concat.css',
+          dest: 'css/styles.min.css'
+        }
+    },
     watch: {
         js: {
             files: ['src/js/*.js'],
             tasks: ['uglify:dev']
         },
         css: {
-            files: ['src/less/**/*.less'],
-            tasks: ['less:dev']
+            //files: ['/less/**/*.less'],
+            files: ['src/css/*.css'],
+            tasks: ['concat', 'cssmin']
+            //tasks: ['cssmin']
         }
     },
     less: {
@@ -42,7 +56,8 @@ module.exports = function(grunt) {
         build: {
             options: {
                 paths: ["./src/less"],
-                yuicompress: true            },
+                yuicompress: true
+            },
             files: {
                 'css/styles.css' : 'src/less/application.less'
             }
@@ -55,10 +70,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-css');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  // Default task(s).
-    grunt.registerTask('default', ['uglify:dev','less:dev']);
-    grunt.registerTask('build', ['uglify:build', 'less:build']);
+
+    // Default task(s).
+    //grunt.registerTask('default', ['uglify:dev','less:dev']);
+    grunt.registerTask('default', ['uglify:dev', 'concat', 'cssmin']);
+    grunt.registerTask('build', ['uglify:build', 'concat', 'cssmin']);
 
 };
 
