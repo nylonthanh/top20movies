@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 movie-image">
-                <img class="movie-details poster" src="">
+                <img class="poster" src="//image.tmdb.org/t/p/w500/{{movieArray.poster_path|escape}}">
             </div>
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 movie-info">
-                <h3><span class="movie-details title"></span></h3>
-                <h4>$<span class="movie-details revenue"></span></h4>
+                <h3>{{ movieArray.title|escape }}</h3>
+                <h4>${{ movieArray.revenue|number_format|escape }}</h4>
                 <p class="rating">
-                    <span class="average"><b><span class="movie-details average rating"></span></b></span> / 10
-                    <span class="votes">(<span class="movie-details votes"></span>)</span>
+                    <span class="average"><b>{{ movieArray.vote_average|escape }}</b></span> / 10
+                    <span class="votes">({{ movieArray.vote_count|escape }} votes)</span>
                 </p>
-                <p><span class="movie-details overview"></span></p>
+                <p>{{ movieArray.overview|escape }}</p>
             </div>
         </div>
     </div>

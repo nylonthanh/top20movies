@@ -10,17 +10,6 @@ body {
     background-color: #fff;
 }
 
-.overlay {
-    background: rgba(18,29,40,0.975);
-    content: ' ';
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
 .tk-proxima-nova-soft {
     font-family: "proxima-nova-soft",sans-serif;
 }
@@ -74,6 +63,8 @@ div#top-movies-hero .btn.btn-default:hover {
 
 .row {
     overflow: hidden;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .container, .container-fluid {
@@ -128,6 +119,8 @@ div.top-movie>div.wrapper {
 
 div.top-movie>div.wrapper>.poster>img {
     max-width: 100%;
+    vertical-align: middle;
+    border: 0;
 }
 
 .col-xs-6 {
@@ -144,13 +137,44 @@ body.page-top-movies div.top-movies div.top-movie>div.wrapper>.info {
     top: 0;
 }
 
+/* overlay and movie details page */
+
+.overlay {
+    background: rgba(18,29,40,0.975);
+    content: ' ';
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+body.page-top-movies div.movie {
+    color: white;
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    z-index: 2;
+}
+
+div.movie .movie-image>.poster {
+    max-width: 100%;
+}
+
 @media screen and (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+
     .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
         float: left;
     }
+
     .col-sm-6 {
         width: 50%;
     }
+
     .jumbotron {
         padding-top: 48px;
         padding-bottom: 48px;
@@ -177,12 +201,18 @@ body.page-top-movies div.top-movies div.top-movie>div.wrapper>.info {
     .container {
         width: 1170px;
     }
+
     .col-lg-3 {
         width: 25%;
     }
+
     .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
         float: left;
         margin-bottom: 30px;
+    }
+
+    .col-lg-9 {
+        width: 75%;
     }
 }
 

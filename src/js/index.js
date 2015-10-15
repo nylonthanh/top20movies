@@ -11,6 +11,7 @@ var onPostHover = function () {
 
 var onPosterClick = function () {
     $('div.top-movie>div.wrapper').on('click', function() {
+        $('#movie-details').append(' ');
         $('.overlay').toggleClass('hidden');
         $('#movie-details').toggleClass('hidden');
 
@@ -20,13 +21,14 @@ var onPosterClick = function () {
                 'movieId' : movieId
             },
             function( data ) {
-                $( '#movie-details' ).html( data );
+                $('#movie-details').append( data );
             }
         );
     });
 
     $('.overlay').on('click', function() {
         $('.overlay').toggleClass('hidden');
+        $('#movie-details').toggleClass('hidden');
     });
 };
 
